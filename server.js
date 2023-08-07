@@ -4,11 +4,13 @@ const db = require('./config/db');
 const bodyParser = require('body-parser');
 const app = express();
 var cors = require('cors');
-
 var server = require('http').createServer(app);
+
+const FRONTEND_URL = process.env.FRONTEND_URL || 'http://localhost:3000';
+
 const io = require('socket.io')(server, {
   cors: {
-    origin: "https://dgg-frontend.onrender.com",
+    origin: FRONTEND_URL,
     methods: ["GET", "POST"]
   }
 })
